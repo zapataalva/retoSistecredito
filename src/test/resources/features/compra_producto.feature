@@ -4,9 +4,9 @@ Feature: Compra de producto en Falabella
   Quiero ingresar a falabella
   Para comprar un celular
 
-  Scenario: Compra de celular iphone en Falabella
+  Scenario: Compra de celular iPhone 12 Mini 64GB en Falabella
     Given 'Santiago' desea navegar a la pagina "https://www.falabella.com.co/falabella-co"
-    When Ingresa el producto a comprar "Iphone"
+    When Ingresa el producto a comprar "iPhone 12 Mini 64GB"
     And Ingresa la información de despacho
       | departamento | ANTIOQUIA   |
       | ciudad       | BELLO       |

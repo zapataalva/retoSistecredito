@@ -4,9 +4,9 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import tasks.SeleccionarProducto;
 
-import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
 
 public class CompraProductoStepDefinitions {
     @Before
@@ -18,9 +18,8 @@ public class CompraProductoStepDefinitions {
     }
 
     @When("Ingresa el producto a comprar {string}")
-    public void ingresaElProductoAComprar(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void ingresaElProductoAComprar(String producto) {
+        theActorInTheSpotlight().attemptsTo(SeleccionarProducto.con(producto));
     }
 
     @When("Ingresa la información de despacho")
