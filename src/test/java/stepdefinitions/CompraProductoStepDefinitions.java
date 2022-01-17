@@ -1,12 +1,18 @@
 package stepdefinitions;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import questions.ValidarTexto;
+import tasks.RealizarCompra;
 import tasks.SeleccionarProducto;
 
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static userinterfaces.PaymentPage.TITLE_ORDEN;
 
 public class CompraProductoStepDefinitions {
     @Before
@@ -23,20 +29,12 @@ public class CompraProductoStepDefinitions {
     }
 
     @When("Ingresa la información de despacho")
-    public void ingresaLaInformaciónDeDespacho(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-        throw new io.cucumber.java.PendingException();
+    public void ingresaLaInformaciónDeDespacho(DataTable informacionDespacho) {
+        theActorInTheSpotlight().attemptsTo(RealizarCompra.conInfo(informacionDespacho));
     }
 
     @Then("Valida que la pagina contenga {string}")
-    public void validaQueLaPaginaContenga(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void validaQueLaPaginaContenga(String texto) {
+        theActorInTheSpotlight().should(seeThat(ValidarTexto.con(texto, TITLE_ORDEN),equalTo(texto)));
     }
 }
